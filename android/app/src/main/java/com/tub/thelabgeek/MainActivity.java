@@ -1,4 +1,4 @@
-package com.yourcompany.thelabgeek;
+package com.tub.thelabgeek;
 
 import android.os.Bundle;
 
