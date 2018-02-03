@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../configuration.dart';
+import '../strings.dart';
 
 class TlgPageSettings extends StatelessWidget {
   const TlgPageSettings({this.configuration, this.configurationUpdate});
@@ -12,7 +13,7 @@ class TlgPageSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-      title: new Text('Settings'),
+          title: new Text(TlgStrings.of(context).settings()),
     ));
   }
 }

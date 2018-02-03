@@ -4,6 +4,10 @@ description: An native application that is indisposable for the modern scientist
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: 0.15.2
+  intl_translation: 0.16.1
 
 dev_dependencies:
   flutter_test:

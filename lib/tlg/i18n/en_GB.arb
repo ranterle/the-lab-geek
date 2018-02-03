@@ -1,0 +1,15 @@
+{
+  "@@locale": "en_GB",
+  "experiments": "Experiments",
+  "@experiments": {
+    "description": "Label for the Experiments page",
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Label for the Settings page",
+    "type": "text",
+    "placeholders": {}
+  }
+}
