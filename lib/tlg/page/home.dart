@@ -20,18 +20,71 @@ import 'package:flutter/material.dart';
 
 import '../configuration.dart';
 import '../data.dart';
+import '../strings.dart';
 
-class TlgPageHome extends StatelessWidget {
-  const TlgPageHome({this.data, this.configuration});
+class TlgPageHome extends StatefulWidget {
+  const TlgPageHome({this.data, this.configuration, this.configurationUpdate});
 
   final TlgData data;
   final TlgConfiguration configuration;
+  final ValueChanged<TlgConfiguration> configurationUpdate;
+
+  @override
+  _State createState() => new _State();
+}
+
+class _State extends State<TlgPageHome> {
+  int _debug = 0;
+
+  void updateConfiguration(TlgConfiguration value) {
+    if (widget.configurationUpdate != null) widget.configurationUpdate(value);
+  }
+
+  void _handleShowSettings() {
+    Navigator.popAndPushNamed(context, '/settings');
+  }
+
+  void _handleDebug() {
+    if (++_debug > 5) {
+      updateConfiguration(widget.configuration.copyWith(debug: true));
+      _debug = 0;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text('The Lab Geek'),
-        ));
+      appBar: new AppBar(
+        title: new Text('The Lab Geek'),
+      ),
+      drawer: new Drawer(
+        child: new ListView(
+          children: <Widget>[
+            new DrawerHeader(
+              child: const Center(child: const Text('TODO: Header')),
+            ),
+            new ListTile(
+              leading: const Icon(Icons.archive),
+              title: new Text(TlgStrings.of(context).archived()),
+            ),
+            const Divider(),
+            new ListTile(
+              leading: const Icon(Icons.settings),
+              title: new Text(TlgStrings.of(context).settings()),
+              onTap: _handleShowSettings,
+            ),
+            new AboutListTile(
+              icon: const Icon(Icons.help),
+              applicationName: 'The Lab Geek',
+              applicationVersion: 'TODO: 0.0.0',
+              applicationIcon: new IconButton(
+                icon: const Icon(Icons.whatshot),
+                onPressed: _handleDebug,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -21,17 +21,37 @@ import 'package:flutter/material.dart';
 import '../configuration.dart';
 import '../strings.dart';
 
-class TlgPageSettings extends StatelessWidget {
+class TlgPageSettings extends StatefulWidget {
   const TlgPageSettings({this.configuration, this.configurationUpdate});
 
   final TlgConfiguration configuration;
   final ValueChanged<TlgConfiguration> configurationUpdate;
 
   @override
+  _State createState() => new _State();
+}
+
+class _State extends State<TlgPageSettings> {
+  void updateConfiguration(TlgConfiguration value) {
+    if (widget.configurationUpdate != null) widget.configurationUpdate(value);
+  }
+
+  void _handleShowDebug() {
+    Navigator.pushNamed(context, '/debug');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(TlgStrings.of(context).settings()),
-        ));
+      appBar: new AppBar(
+        title: new Text(TlgStrings.of(context).settings()),
+        actions: (widget.configuration.debug) ? <Widget>[
+          new IconButton(
+              icon: const Icon(Icons.whatshot),
+              onPressed: _handleShowDebug
+          )
+        ] : <Widget>[],
+      ),
+    );
   }
 }

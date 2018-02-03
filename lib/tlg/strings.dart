@@ -51,4 +51,100 @@ class TlgStrings {
     desc: 'Label for the Settings page',
     locale: _localeName,
   );
+
+  String archived() =>
+      Intl.message(
+        'Archived',
+        name: 'archived',
+        desc: 'Label for the Archived page',
+        locale: _localeName,
+      );
+
+  String debug() =>
+      Intl.message(
+        'Debug',
+        name: 'debug',
+        desc: 'Label for the Debug page',
+        locale: _localeName,
+      );
+
+  String debugEnabled() =>
+      Intl.message(
+        'Debug enabled',
+        name: 'debugEnabled',
+        desc: 'A toast that notifies the user that debug mode has been enabled',
+        locale: _localeName,
+      );
+
+  String debugToggleMode() =>
+      Intl.message(
+        'Debug mode',
+        name: 'debugToggleMode',
+        desc: 'Label for the debugging toggle that enables/disables debug mode',
+        locale: _localeName,
+      );
+
+  String debugToggleMaterialGrid() =>
+      Intl.message(
+        'Show material grid',
+        name: 'debugToggleMaterialGrid',
+        desc: 'Label for the debugging toggle that shows the material grid',
+        locale: _localeName,
+      );
+
+  String debugToggleConstructionLines() =>
+      Intl.message(
+        'Show construction lines',
+        name: 'debugToggleConstructionLines',
+        desc: 'Label for the debugging toggle that shows the construction lines',
+        locale: _localeName,
+      );
+
+  String debugToggleBaselines() =>
+      Intl.message(
+        'Show baselines',
+        name: 'debugToggleBaselines',
+        desc: 'Label for the debugging toggle that shows the baselines',
+        locale: _localeName,
+      );
+
+  String debugToggleLayerBoundaries() =>
+      Intl.message(
+        'Show layer boundaries',
+        name: 'debugToggleLayerBoundaries',
+        desc: 'Label for the debugging toggle that shows the layer boundaries',
+        locale: _localeName,
+      );
+
+  String debugTogglePointerHitTesting() =>
+      Intl.message(
+        'Show pointer hit-testing',
+        name: 'debugTogglePointerHitTesting',
+        desc: 'Label for the debugging toggle that shows the pointer hit-testing outlines',
+        locale: _localeName,
+      );
+
+  String debugToggleRepaintRainbow() =>
+      Intl.message(
+        'Show repaint rainbow',
+        name: 'debugToggleRepaintRainbow',
+        desc: 'Label for the debugging toggle that shows the repaint rainbow',
+        locale: _localeName,
+      );
+
+  String debugToggleRenderingPerformanceOverlay() =>
+      Intl.message(
+        'Show rendering performance overlay',
+        name: 'debugToggleRenderingPerformanceOverlay',
+        desc: 'Label for the debugging toggle that shows the rendering performance overlay',
+        locale: _localeName,
+      );
+
+  String debugToggleSemanticsOverlay() =>
+      Intl.message(
+        'Show semantics overlay',
+        name: 'debugToggleSemanticsOverlay',
+        desc: 'Label for the debugging toggle that shows the semantics overlay',
+        locale: _localeName,
+      );
 }

@@ -21,6 +21,7 @@ enum TlgTheme { light, dark }
 class TlgConfiguration {
   TlgConfiguration({
     this.theme = TlgTheme.light,
+    this.debug = false,
     this.debugShowGrid = false,
     this.debugShowSizes = false,
     this.debugShowBaselines = false,
@@ -32,6 +33,7 @@ class TlgConfiguration {
   });
 
   final TlgTheme theme;
+  final bool debug;
   final bool debugShowGrid;
   final bool debugShowSizes;
   final bool debugShowBaselines;
@@ -43,9 +45,19 @@ class TlgConfiguration {
 
   TlgConfiguration copyWith({
     TlgTheme theme,
+    debug,
+    debugShowGrid,
+    debugShowSizes,
+    debugShowBaselines,
+    debugShowLayers,
+    debugShowPointers,
+    debugShowRainbow,
+    debugShowPerformanceOverlay,
+    debugShowSemanticsDebugger,
   }) {
     return new TlgConfiguration(
         theme: theme ?? this.theme,
+        debug: debug ?? this.debug,
         debugShowGrid: debugShowGrid ?? this.debugShowGrid,
         debugShowSizes: debugShowSizes ?? this.debugShowSizes,
         debugShowBaselines: debugShowBaselines ?? this.debugShowBaselines,

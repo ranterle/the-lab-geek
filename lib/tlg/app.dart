@@ -30,10 +30,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'configuration.dart';
 import 'data.dart';
+import 'strings.dart';
+
 import 'page/experiment.dart';
 import 'page/home.dart';
 import 'page/settings.dart';
-import 'strings.dart';
+import 'page/debug.dart';
 
 class TlgApp extends StatefulWidget {
   @override
@@ -66,8 +68,7 @@ class _State extends State<TlgApp> {
 
   void configurationUpdate(TlgConfiguration value) {
     setState(() {
-      _configuration:
-      value;
+      _configuration = value;
     });
   }
 
@@ -104,19 +105,19 @@ class _State extends State<TlgApp> {
   @override
   Widget build(BuildContext context) {
     assert(() {
-      debugPaintSizeEnabled = _configuration.debugShowSizes;
-      debugPaintBaselinesEnabled = _configuration.debugShowBaselines;
-      debugPaintLayerBordersEnabled = _configuration.debugShowLayers;
-      debugPaintPointersEnabled = _configuration.debugShowPointers;
-      debugRepaintRainbowEnabled = _configuration.debugShowRainbow;
+      debugPaintSizeEnabled = _configuration.debug && _configuration.debugShowSizes;
+      debugPaintBaselinesEnabled = _configuration.debug && _configuration.debugShowBaselines;
+      debugPaintLayerBordersEnabled = _configuration.debug && _configuration.debugShowLayers;
+      debugPaintPointersEnabled = _configuration.debug && _configuration.debugShowPointers;
+      debugRepaintRainbowEnabled = _configuration.debug && _configuration.debugShowRainbow;
       return true;
     }());
     return new MaterialApp(
       title: 'The Lab Geek',
       theme: theme,
-      debugShowMaterialGrid: _configuration.debugShowGrid,
-      showPerformanceOverlay: _configuration.debugShowPerformanceOverlay,
-      showSemanticsDebugger: _configuration.debugShowSemanticsDebugger,
+      debugShowMaterialGrid: _configuration.debug && _configuration.debugShowGrid,
+      showPerformanceOverlay: _configuration.debug && _configuration.debugShowPerformanceOverlay,
+      showSemanticsDebugger: _configuration.debug && _configuration.debugShowSemanticsDebugger,
       localizationsDelegates: <LocalizationsDelegate<dynamic>>[
         new _LocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -130,8 +131,14 @@ class _State extends State<TlgApp> {
         '/': (BuildContext _) => new TlgPageHome(
           data: data,
           configuration: _configuration,
+          configurationUpdate: configurationUpdate,
         ),
         '/settings': (BuildContext _) => new TlgPageSettings(
+          configuration: _configuration,
+          configurationUpdate: configurationUpdate,
+        ),
+        '/debug': (BuildContext _) =>
+        new TlgPageDebug(
           configuration: _configuration,
           configurationUpdate: configurationUpdate,
         ),
