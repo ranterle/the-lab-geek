@@ -1,10 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart'
+    show
+    debugPaintSizeEnabled,
+    debugPaintBaselinesEnabled,
+    debugPaintLayerBordersEnabled,
+    debugPaintPointersEnabled,
+    debugRepaintRainbowEnabled;
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'configuration.dart';
 import 'data.dart';
+import 'configuration.dart';
 import 'page/experiment.dart';
 import 'page/home.dart';
 import 'page/settings.dart';
@@ -78,12 +85,20 @@ class _State extends State<TlgApp> {
 
   @override
   Widget build(BuildContext context) {
+    assert(() {
+      debugPaintSizeEnabled = _configuration.debugShowSizes;
+      debugPaintBaselinesEnabled = _configuration.debugShowBaselines;
+      debugPaintLayerBordersEnabled = _configuration.debugShowLayers;
+      debugPaintPointersEnabled = _configuration.debugShowPointers;
+      debugRepaintRainbowEnabled = _configuration.debugShowRainbow;
+      return true;
+    }());
     return new MaterialApp(
       title: 'The Lab Geek',
       theme: theme,
-      debugShowMaterialGrid: _configuration.showGrid,
-      showPerformanceOverlay: _configuration.showPerformanceOverlay,
-      showSemanticsDebugger: _configuration.showSemanticsDebugger,
+      debugShowMaterialGrid: _configuration.debugShowGrid,
+      showPerformanceOverlay: _configuration.debugShowPerformanceOverlay,
+      showSemanticsDebugger: _configuration.debugShowSemanticsDebugger,
       localizationsDelegates: <LocalizationsDelegate<dynamic>>[
         new _LocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
